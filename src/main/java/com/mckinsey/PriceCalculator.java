@@ -2,6 +2,8 @@ package com.mckinsey;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.mckinsey.cart.Cart;
 import com.mckinsey.cart.Item;
@@ -58,11 +60,15 @@ public class PriceCalculator {
 		}
 		System.out.print("Please select a type:");
 		String type = reader.readLine();
+		Date membershipDate = null;
 		if (UserType.CUSTOMER.name().equalsIgnoreCase(type)) {
-			System.out.print("Member since[dd/mm/yy]:");
+			System.out.print("Member since[dd/mm/yyyy]:");
 			String date = reader.readLine();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+			membershipDate = dateFormat.parse(date);
 		}
-		return new UserBuilder(name).setUserType(
-				UserType.valueOf(type.toUpperCase())).createUser();
+		return new UserBuilder(name)
+				.setUserType(UserType.valueOf(type.toUpperCase()))
+				.setMemberShipDate(membershipDate).createUser();
 	}
 }
