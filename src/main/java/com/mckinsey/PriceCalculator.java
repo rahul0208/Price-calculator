@@ -24,7 +24,7 @@ public class PriceCalculator {
 		System.out.println("##################################");
 		System.out.println("Receipt for : " + user);
 		System.out.println(cart);
-		System.out.println("Total Discount : " + discount);
+		System.out.println("Total Discount ### " + discount);
 	}
 
 	private static Cart buildCart(BufferedReader reader) throws Exception {
